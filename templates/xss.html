@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sql injection test</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" >
+</head>
+<body style="background-color: #013C46;">
+    <style>
+
+      #getstarted{
+              color: #7CC8D2;
+              text-decoration: none;
+              }
+        #tabbar{
+          background-color: #3D848F;
+        }
+        #tab{
+          text-align: center;
+          margin-top: 15px;
+          
+        }
+        #pad{
+                    padding: 10px;
+                }
+        #centralizeform{
+          padding-top: 150px;
+          padding-left: 10%;
+        }
+        #parameter{
+                margin-top: 20px;
+                padding-left: 15px;
+                font-size: 20px;
+                margin-bottom:20px;
+                color: green;
+                background-color: white;
+                max-width: 700px;
+                margin-left: 15px;
+                border-radius: 10px;
+              }
+                    label[for="id_url"]
+                {
+                  display:none;
+                }
+                input[type=text]{
+                  width:500px !important;
+                  border-radius: 2px;
+                  }
+              #submitbutton{
+                border-radius: 2px;
+              }
+              .errorlist li{
+                    color: white;
+                    list-style: none;
+                    position: relative;
+                    top: 10px;
+                    right: 10px;
+                  }
+              .row{
+                max-width: 100%;
+              }
+              #main, #documentation, #feedback{
+            min-height: 650px;
+        }
+        #feedback{
+            max-width: 500px;
+            padding-top: 60px;
+        }
+        #documentation{
+            padding-top: 10px;
+            background-color: white;
+        }
+        #documentation h2,h3{
+            text-align: center;
+            color: #013C46;
+        }
+        #documentation h3,li{
+            padding-top: 20px;
+        }
+        .navbar {
+            -webkit-box-shadow: 0 8px 6px -6px #999;
+            -moz-box-shadow: 0 8px 6px -6px #999;
+            box-shadow: 0 8px 6px -6px #999;
+
+            /* the rest of your styling */
+        }
+        .col-sm-3 ul{
+            list-style: none;
+        }
+        #footer{
+            height: 40px;
+            background-color: rgb(1, 39, 46);
+        }
+        #centerit{
+            color:white;
+            text-align:center;
+            padding-top: 5px;
+            margin-bottom: 0%;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">SQLDEX</a>
+          <button class="navbar-toggler" typea="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto ">
+              <li class="nav-item active">
+                <a class="nav-link" href="#"> <span class="sr-only"></span></a>
+              </li>
+              
+            </ul>
+            
+            <div style="margin-right:-10px;">
+              <span class="navbar-text" id="pad">
+                      <a href="#documentation">DOCUMENTATION</a>
+              </span>
+              <span class="navbar-text" id="pad">
+                      <a href="#feedback">FEEDBACK</a>
+              </span>
+            </div>
+          </div>
+          </div>
+      </nav>
+<!-- ######################################################################### The next div contains all the sub nav -->
+      <div id="tabbar">
+        <div class="row" >
+        <div class="col-2" id="tab" style="margin-left:120px;">
+            <p><a href="{% url 'sql' %}" id="getstarted"  >URL PARAMETER</a></p>
+        </div>
+        <div class="col-2" id="tab">
+            <p><a href="{% url 'formparameter' %}" id="getstarted">FORM PARAMETER</a></p>
+          </div>
+          <div class="col-2" id="tab">
+            <p><a href="{% url 'header' %}" id="getstarted" >HTTP HEADER</a></p>
+        </div>
+       
+        <div class="col-2" id="tab">
+            <p><a href="{% url 'xss' %}" id="getstarted" class="text-white border-bottom">XSS</a></p>
+        </div>
+        </div>
+      </div>
+<!-- ####################################################################################################### -->
+      
+          <!-- search component -->
+          <section id="main">
+            <div id="centralizeform">
+                <h2 class="text-white" style="padding-left: 15px;">Cross Site Scripting(XSS)</h2>
+            <p class="text-white" id="pad" style="padding-left: 15px;">Please enter the url to be tested in the following format: <br />
+              http://www.example.com/?page=something.php
+            </p>
+            <form action="" method="POST" class="form-inline my-2 my-lg-0 col-lg-9 col-10">{% csrf_token %}
+              {{form}}
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="submitbutton">Test Url</button>
+            
+            </form>
+            </span>
+            <div id="parameter">
+              {% if notvulnerable %}
+              <p><strong>RESULT</strong></p>
+              {{link}}{{getresult}}
+              
+              {% endif %}
+
+              {% if vulnerable %}
+              <span style="color:black;"><strong>RESULT: </strong></span>
+              <span style="color: red;">{{link}}</span><span style="color:red; ">{{getresult}}</span>
+              <p style="text-align: center; color: black;"><strong>Vulnerability Description</strong></p>
+                <div class="table-responsive">
+                  <table class="table" style="color:black;">
+                  <thead>
+                  <tr>
+                  <th>Issue</th>
+                  <th>Description</th>
+                  <th>Suggested Remediation</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <th>Encoding</th>
+                  <td>To reduce the risk we may encode some htmlchar</td>
+                  <td>htmlspecialchars will convert any "HTML special characters" into their HTML encodings, meaning they will then not be processed as standard HTML.</td>
+                  </tr>
+                  <tr>
+                  <th>Filter Input</th>
+                  <td>There is no WAF (web application firewall) Configured to block the Input form.</td>
+                  <td>Sanitize any user input before it is processed and/or rendered back to the browser. 
+                  </p></td>
+                  </tr>
+                  </tbody>
+                  </table>
+                </div>
+              {% endif %}
+            </div>
+          </section>
+
+                
+                    <section id="footer" >
+                            <div class="container "></div>
+                            
+                                    <p id="centerit" >All rights reserved © 2018</p>
+                                    <p id="centerit" >Powered By <a href="https://github.com/abdulgaphy">GAPHY</a> and <a href="https://github.com/mosesayo">Moses</a> </p>
+                          
+                            </div>
+                    </section>
+        
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
