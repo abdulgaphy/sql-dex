@@ -14,9 +14,13 @@ The tool, as some features like Parameter ID, Form Parameter, HTTP header and Cr
 
 # Installation
 
-- $ git clone
-- $ cd sql-dex
-- $ pip install -r requirements.txt or pip3 install -r requirements.txt
+```bash
+$ git clone
+$ cd sql-dex
+$ pip install -r requirements.txt 
+# OR
+$ pip3 install -r requirements.txt
+```
 
 # Contributions
 This project is open Bug reports and pull requests are welcome on GitHub at

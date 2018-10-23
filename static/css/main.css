@@ -1,0 +1,100 @@
+#pad {
+    padding: 10px;
+}
+
+#welcometext {
+    max-width: 400px;
+}
+
+#centralize {
+    text-justify: auto;
+    text-align: center;
+    padding-top: 150px;
+}
+
+#getstarted {
+    background-color: #ffffff;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: #013C46;
+    text-decoration: none;
+
+}
+
+#showcase,
+#documentation,
+#feedback {
+    min-height: 650px;
+}
+
+#feedback {
+    max-width: 500px;
+    padding-top: 60px;
+}
+
+#documentation {
+    padding-top: 10px;
+    background-color: white;
+}
+
+#documentation h2,
+h3 {
+    text-align: center;
+    color: #013C46;
+}
+
+#documentation h3,
+li {
+    padding-top: 20px;
+}
+
+#showcase {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/static/photo/home.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.row {
+    max-width: 100%;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+
+    /* the rest of your styling */
+}
+
+.col-sm-3 ul {
+    list-style: none;
+}
+
+label[for="id_fullname"] {
+    color: white;
+}
+
+label[for="id_email"] {
+    color: white;
+}
+
+label[for="id_comment"] {
+    color: white;
+}
+
+#id_email,
+#id_comment {
+    padding-top: 10px;
+}
+
+#footer {
+    height: 40px;
+    background-color: rgb(1, 39, 46);
+}
+
+#centerit {
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 0%;
+}
