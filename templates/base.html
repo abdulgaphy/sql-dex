@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
         <link rel='stylesheet' href="{% static 'css/main.css' %}"
     {% endblock %}
+    
     <title>Home</title>
 </head>
 
@@ -46,92 +47,7 @@
     {% endblock %}
     
     {% block content %}
-    <section id="showcase">
-        <div id="centralize">
-            <h2 class="text-white" id="centralize">SQLDEX 1.0</h2>
-            <p class="text-white" id="welcometext centralize">Welcome to sqldex, you can scan urls to detect for sql
-                injection vulnurability. <br />This will help you detect SQL injection in your website.</p>
-            <button id="getstarted" onclick="window.location.href='sql'"><a href="{% url 'sql' %}" id="getstarted">GET
-                    STARTED</a></button>
-
-        </div>
-    </section>
-
-    <section id="documentation">
-
-        <h2>Documentation</h2>
-        <div class="container">
-            SQL Injection is one of the most dangerous vulnerabilities a web application can be prone to. When a user’s
-            input is being passed unvalidated and unsanitzed as part of an SQL query that means that the user can
-            manipulate the query itself and force it to return different data than what it was supposed to return. we
-            will see how and why this is so dangerous.
-            <p class="my-3"><b>Example of vulnerable code</b></p>
-            Suppose that we have a web application <a href='#'>http://website.com/show.php?article=1</a> which takes
-            the parameter <code>article</code> via <code>$_GET</code> request and queries the database to get an
-            article’s content. <br />
-
-            The underlying PHP code is the following:<br />
-            <ul>
-                <li>The <code>article</code> parameter is assigned to <code>$article</code> variable without any
-                    sanitization or validation</li>
-                <li><code>$articleid = $_GET[‘article’];</code> </li>
-                <li>The <code>$articleid</code> parameter is passed as part of the query<br /> 
-                    <code>$query = "SELECT * FROM articles WHERE articleid = $articleid";</code></li>
-            </ul>
-
-            If a user changes the article parameter to 1 AND 1=1 then the query becomes like this:
-            <code>$query = "SELECT * FROM articles WHERE articleid = 1 AND 1=1";</code>
-            In this case, the content of the page does not change because the two conditions in the SQL statement are
-            both true.
-            There is an article with an id of 1, and 1 equals to 1 which is true.
-
-            If a user changes the parameter to 1 AND 1=2, it returns nothing because 1 is not equal to 2.
-
-            That means that the user is controlling the query and can adjust it accordingly to manipulate the results.
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col col-sm-4" style="margin-left: -2%;">
-                    <h3>SQL Injection</h3>
-                    <ul>
-                        <li>You can scan a url for SQL Injection vulnerability simply by inserting the url in the url
-                            field and clicking "Test Url</li>
-                        <li>If the url is vulnerable to SQL Injection, It will be shown in the result </li>
-                        <li>Procedures to take in protecting against this kind of attack will be suggested if the url
-                            is vulnerable to this kind of attack.</li>
-                    </ul>
-                </div>
-                <div class="col col-sm-4">
-                    <h3>HTTP HEADER</h3>
-                    <ul>
-                        <li>Get basic informations About HTTP protocol of any website E.g Cookies,hostname </li>
-                        <li>You can insert a website address or I.P address in the URL field and click on Get info.</li>
-                        <li>Procedures to take in protecting against this kind of attack will be suggested if the url
-                            is vulnerable to this kind of attack.</li>
-                    </ul>
-                </div>
-                <div class="col col-sm-4">
-                    <h3>Cross Site Scrpting</h3>
-                    <ul>
-                        <li>Cross-site scripting is the unintended execution of remote code by a web client. Any web
-                            application might expose itself to XSS if it takes input from a user and outputs it
-                            directly on a web page. If input includes HTML or JavaScript, remote code can be executed
-                            when this content is rendered by the web client.</li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <div class="container">
-        <section id="feedback">
-            <h2 class="text-white"> {{feedback}} </h2><br />
-            <form method="POST">{% csrf_token %}
-                {{contact}}
-                <br> <button type="submit" class="btn btn-light"> submit</button>
-        </section>
-    </div>
+        <!-- Main content Goes here -->
     {% endblock %}
 
     {% block footer %}
