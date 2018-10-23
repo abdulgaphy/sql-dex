@@ -4,6 +4,13 @@ The tool, as some features like Parameter ID, Form Parameter, HTTP header and Cr
 
 
 # Screnshots
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/home.JPG)
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/sql-vuln.JPG)
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/sql-notvuln.JPG)
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/form-vuln.JPG)
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/form-notvuln.JPG)
+![sqldex](https://github.com/abdulgaphy/sql-dex/blob/master/screenshots/httphead.JPG)
+
 
 # Installation
 
