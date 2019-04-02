@@ -233,10 +233,6 @@ def formparameter(request):
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                 
-
-	
-
-    
     return render(request, "dbdex/formparameter.html", context)
 
 # the method for printing http header
@@ -265,6 +261,7 @@ def header(request):
         return render (request, "dbdex/header.html", context)
 
     return render (request, "dbdex/header.html", context)
+    
 # the method for xss
 def xss(request):
     form = urlForm(request.POST or None)
