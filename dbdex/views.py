@@ -1,7 +1,10 @@
+from django.shortcuts import render
+
+# Create your views here.
 # Views.py controls what is being seen in the browser
 from django.http import HttpResponse 
 from django.shortcuts import render
-from .forms import urlForm, ContactForm
+from . forms import urlForm, ContactForm
 import requests
 import urllib
 import json
@@ -13,7 +16,7 @@ def home_page(request):
         "contact":contact
     }
     
-    return render(request, "index.html", context)
+    return render(request, "dbdex/index.html", context)
 
 # The sql function below contain all about the sql injection page
 def sql(request):
@@ -53,7 +56,7 @@ def sql(request):
                         "feedback":"Feedback",
                         "contact":contact,
                     }
-                    return render (request, "sql.html", context)
+                    return render (request, "dbdex/sql.html", context)
 
                 elif 'MySQL' in response:
                     resp ='Found database type: MYSQL'
@@ -66,7 +69,7 @@ def sql(request):
                         "feedback":"Feedback",
                         "contact":contact,
                     }
-                    return render (request, "sql.html", context)
+                    return render (request, "dbdex/sql.html", context)
 
                 elif 'MariaDB' in response:
                     resp ='Found database type: MariaDB'
@@ -79,7 +82,7 @@ def sql(request):
                         "feedback":"Feedback",
                         "contact":contact,
                     }
-                    return render (request, "sql.html", context)
+                    return render (request, "dbdex/sql.html", context)
 
                 else:
                     resp ='can not find the type of database used'
@@ -92,7 +95,7 @@ def sql(request):
                         "contact":contact
                     }
     
-                    return render(request, "sql.html", context)
+                    return render(request, "dbdex/sql.html", context)
                     
             else:
                 printout =" is NOT vulnerable to SQL injection"
@@ -105,8 +108,8 @@ def sql(request):
                         "link": str1,
                         "result": printout
                         }
-                return render(request, "sql.html", context)
-    return render(request, "sql.html", context)
+                return render(request, "dbdex/sql.html", context)
+    return render(request, "dbdex/sql.html", context)
 # this method check for the form parameter
 def formparameter(request):  
     form = urlForm(request.POST or None)
@@ -144,7 +147,7 @@ def formparameter(request):
                     "contact":contact
                 } 
                 print('Not vulnerable')
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                 
 
             elif "invalid" in req.text :
@@ -161,7 +164,7 @@ def formparameter(request):
                     "feedback":"Feedback",
                     "contact":contact
                 } 
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                 
 
             elif "incorrect" in req.text :
@@ -178,7 +181,7 @@ def formparameter(request):
                     "feedback":"Feedback",
                     "contact":contact
                 } 
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                 
 
             elif "Wrong" in req.text :
@@ -195,7 +198,7 @@ def formparameter(request):
                     "feedback":"Feedback",
                     "contact":contact
                 } 
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                
 
             elif "error login" in req.text :
@@ -212,7 +215,7 @@ def formparameter(request):
                     "feedback":"Feedback",
                     "contact":contact
                 } 
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                 
             else:
                 url.split("/")[2:]
@@ -228,13 +231,13 @@ def formparameter(request):
                     "feedback":"Feedback",
                     "contact":contact
                 } 
-                return render(request, "formparameter.html", context)
+                return render(request, "dbdex/formparameter.html", context)
                 
 
 	
 
     
-    return render(request, "formparameter.html", context)
+    return render(request, "dbdex/formparameter.html", context)
 
 # the method for printing http header
 def header(request):
@@ -259,9 +262,9 @@ def header(request):
                 "feedback":"Feedback",
                 "contact":contact                     
                 }
-        return render (request, "header.html", context)
+        return render (request, "dbdex/header.html", context)
 
-    return render (request, "header.html", context)
+    return render (request, "dbdex/header.html", context)
 # the method for xss
 def xss(request):
     form = urlForm(request.POST or None)
@@ -312,5 +315,5 @@ def xss(request):
                     }
                     print ("Parameter not vulnerable\r\n")
                     
-                    return render(request, "xss.html", context)
-    return render(request, "xss.html", context)
+                    return render(request, "dbdex/xss.html", context)
+    return render(request, "dbdex/xss.html", context)
