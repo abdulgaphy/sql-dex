@@ -1,0 +1,15 @@
+{% extends 'dbdex/base.html' %}
+{% load static %}
+
+{% block title %}feedback{% endblock title %}
+
+{% block content %}
+    <!-- FEEDBACK section -->
+    <section id="feedback">
+        <h2 class="text-white"> FEEDBACK</h2><br/>
+        <form method="POST">
+            {% csrf_token %}
+            Contact 
+        <button type="submit" class="btn btn-light"> submit</button>
+    </section>
+{% endblock content %}

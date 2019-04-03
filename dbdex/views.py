@@ -9,6 +9,13 @@ import requests
 import urllib
 import json
 
+def documentation(request):
+    return render(request, "dbdex/documentation.html")
+
+def feedback(request):
+    return render(request, 'dbdex/feedback.html')
+
+
 def home_page(request):
     contact = ContactForm()
     context = {

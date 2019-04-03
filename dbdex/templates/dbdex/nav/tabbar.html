@@ -1,0 +1,17 @@
+<div id="tabbar">
+    <div class="row" >
+        <div class="col-2" id="tab" style="margin-left:120px;">
+            <p><a href="{% url 'dbdex:sql' %}" id="getstarted" class="text-white border-bottom">URL PARAMETER</a></p>
+        </div>
+        <div class="col-2" id="tab">
+            <p><a href="{% url 'dbdex:formparameter' %}" id="getstarted" >FORM PARAMETER</a></p>
+        </div>
+        <div class="col-2" id="tab">
+            <p><a href="{% url 'dbdex:header' %}" id="getstarted" >HTTP HEADER</a></p>
+        </div>
+
+        <div class="col-2" id="tab">
+        <p><a href="{% url 'dbdex:xss' %}" id="getstarted" >XSS</a></p>
+        </div>
+    </div>
+</div>

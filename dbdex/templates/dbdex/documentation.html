@@ -1,0 +1,71 @@
+{% extends 'dbdex/base.html' %}
+{% load static %}
+
+{% block title %}Documentation{% endblock title %}
+
+{% block content %}
+
+    <section id="documentation">
+        
+        <h2>Documentation</h2>
+            <div class="container">
+                <p>SQL Injection is one of the most dangerous vulnerabilities a web application can be 
+                prone to. When a user’s input is being passed unvalidated and unsanitzed as part of an 
+                SQL query that means that the user can manipulate the query itself and force it to return 
+                different data than what it was supposed to return.  we will see how and why this is so 
+                dangerous.
+                Example of vulnerable code
+
+                </p>
+                    Suppose that we have a web application which takes the parameter 
+                    “article” via $_GET request and queries the database to get an article’s content. 
+                    http://website.com/show.php?article=1 The underlying PHP code is the following: // 
+                    The ”article” parameter is assigned to $article variable without any sanitization or 
+                    validation $articleid = $_GET[‘article’]; // The $articleid parameter is passed as part 
+                    of the query <code>$query = "SELECT * FROM articles WHERE articleid = $articleid";</code>
+                    If a user changes the article parameter to 1 AND 1=1 then the query becomes like this: 
+                    $query = "SELECT * FROM articles WHERE articleid = 1 AND 1=1"; In this case, the content 
+                    of the page does not change because the two conditions in the SQL statement are both true. 
+                    There is an article with an id of 1, and 1 equals to 1 which is true. If a user changes 
+                    the parameter to 1 AND 1=2, it returns nothing because 1 is not equal to 2.That means 
+                    that the user is controlling the query and can adjust it accordingly to manipulate the 
+                    results.
+                </p>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-sm-3" style="margin-left: -2%;">
+                            <h3>SQL Injection</h3>
+                            <ul>
+                                <li>You can scan a url for SQL Injection vulnerability simply by inserting the url in the url field and clicking "Test Url</li>
+                                <li>If the url is vulnerable to SQL Injection, It will be shown in the result </li>
+                                <li>Procedures to take in protecting against this kind of attack will be suggested if the url is vulnerable to this kind of attack.</li>
+                            </ul>
+                        </div>
+            
+                        <div class="col col-sm-3">
+                            <h3>HTTP HEADER</h3>
+                            <ul>
+                                <li>Get basic informations About HTTP protocol of any website E.g Cookies,hostname </li>
+                                <li>You can insert a website address or I.P address in the URL field and click on Get info.</li>
+                                <li>Procedures to take in protecting against this kind of attack will be suggested if the url is vulnerable to this kind of attack.</li>
+                            </ul>
+                        </div>
+
+                        <div class="col col-sm-3">
+                            <h3>Cross Site Scrpting</h3>
+                            <ul>
+                                <li>Cross-site scripting is the unintended execution of remote code by a web 
+                                    client. Any web application might expose itself to XSS if it takes input from 
+                                    a user and outputs it directly on a web page. If input includes HTML or JavaScript,
+                                    remote code can be executed when this content is rendered by the web client.
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+    </section>
+{% endblock content %}
