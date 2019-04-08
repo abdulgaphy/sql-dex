@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+        <link rel='stylesheet' href="{% static 'css/main.css' %}"
+    {% endblock %}
+    
+    <title>Home</title>
+</head>
+
+<body style="background-color: #013C46;">
+    
+    {% block nav %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">SQLDEX</a>
+                <button class="navbar-toggler" typea="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"> <span class="sr-only"></span></a>
+                        </li>
+
+                    </ul>
+
+                    <span class="navbar-text" id="pad">
+                        <a href="#documentation">DOCUMENTATION</a>
+                    </span>
+                    <span class="navbar-text active" id="pad">
+                        <a href="#feedback">FEEDBACK</a>
+                    </span>
+
+                </div>
+            </div>
+        </nav>
+    {% endblock %}
+    
+    {% block content %}
+        <!-- Main content Goes here -->
+    {% endblock %}
+
+    {% block footer %}
+    <section id="footer">
+        <div class="container "></div>
+
+        <p id="centerit">All rights reserved © 2018</p>
+        <p id="centerit">Powered By <a href="https://github.com/abdulgaphy">GAPHY</a> and <a href="https://github.com/mosesayo">Moses</a>
+        </p>
+
+        </div>
+    </section>
+    {% endblock %}
+
+
+    {% block javascript %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+            crossorigin="anonymous"></script>
+    {% endblock %}
+</body>
+
+</html>
