@@ -5,13 +5,39 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <section id="showcase" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'img/home.jpg' %}) no-repeat center center; background-size: cover;">
-        <div id="centralize">
-            <h2 class="text-white" id="centralize">SQLDEX 1.0</h2>
-            <p class="text-white" id="welcometext centralize">Welcome to sqldex, you can scan urls to detect for sql injection vulnurability. <br/>This will help you detect SQL injection in your website.</p>
-            <button id="getstarted" onclick="window.location.href='sql'"><a href="{% url 'dbdex:sql' %}" id="getstarted">GET STARTED</a></button>
+    <section class="showcase" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url({% static 'img/home.jpg' %}) no-repeat center center; background-size: cover;">
+        <div class="text-center">
+            <div class="text-center info">
+                <p>Is your website vulnurable?</p>
+                <p>scan urls to detect </p>
+                <p style='color: goldenrod; font-weight: 900;'>sql injection</p>
+            </div>
+            <a class='' href="{% url 'dbdex:sql' %}">GET STARTED <i class="fas fa-angle-right"></i></a>
         </div>
     </section>
+
+    <div class='container-fluid container-index'>
+        <div class='container'>
+            <h2>What We Do</h2>
+            <div class='row justify-content-center index-card'>
+                <div class='col-sm-6'>
+                    <img class='img-fluid' src='{% static 'img/sql-injection.png' %}' alt='sql injection' />
+                    <h3 class="type-brand">SQL INJECTION TEST</h3>
+                    <p>inserting the url in the url field,
+                        If the url is vulnerable to <b>SQL Injection</b>, It will be shown in the result 
+                    </p>
+                </div>
+
+                <div class='col-sm-6'>
+                    <img class='img-fluid' src='{% static 'img/xss.png' %}' alt='sql injection' />
+                    <h3 class="type-brand">XSS INJECTION TEST</h3>
+                    <p>inserting the url in the url field,
+                        If the url is vulnerable to <b>XSS Injection</b>, It will be shown in the result
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
         

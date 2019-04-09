@@ -1,6 +1,13 @@
 <!-- INput Form -->
-<form action="" method="POST" class="form-inline my-2 my-lg-0 col-lg-9 col-10">
-    {% csrf_token %}
-    {{form}}
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="submitbutton">Test URL</button>
+<form action="" method="POST" class="form-inline">
+    <fieldset>
+        {% csrf_token %}
+
+        <div class="input-group">
+            {{ form.url}}
+            <div class="input-group-prepend">
+                <input class="input-group-text" type="submit" value="TEST URL">
+            </div>
+        </div>
+    </fieldset>
 </form>

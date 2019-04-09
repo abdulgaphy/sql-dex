@@ -3,38 +3,40 @@
 
 {% block title %}Documentation{% endblock title %}
 
-{% block content %}
+{% block contents %}
 
-    <section id="documentation">
+    <section class="documentation">
         
-        <h2>Documentation</h2>
+            <h2>Documentation</h2>
             <div class="container">
-                <p>SQL Injection is one of the most dangerous vulnerabilities a web application can be 
-                prone to. When a user’s input is being passed unvalidated and unsanitzed as part of an 
-                SQL query that means that the user can manipulate the query itself and force it to return 
-                different data than what it was supposed to return.  we will see how and why this is so 
-                dangerous.
-                Example of vulnerable code
+                <div style='padding-bottom: 20px;'>
+                    <p class='shift'><b>SQL Injection</b> is one of the most dangerous vulnerabilities a web application can be 
+                    prone to. When a user’s input is being passed unvalidated and unsanitzed as part of an 
+                    SQL query that means that the user can manipulate the query itself and force it to return 
+                    different data than what it was supposed to return.  we will see how and why this is so 
+                    dangerous.
+                    </p>
 
-                </p>
-                    Suppose that we have a web application which takes the parameter 
-                    “article” via $_GET request and queries the database to get an article’s content. 
-                    http://website.com/show.php?article=1 The underlying PHP code is the following: // 
-                    The ”article” parameter is assigned to $article variable without any sanitization or 
-                    validation $articleid = $_GET[‘article’]; // The $articleid parameter is passed as part 
-                    of the query <code>$query = "SELECT * FROM articles WHERE articleid = $articleid";</code>
-                    If a user changes the article parameter to 1 AND 1=1 then the query becomes like this: 
-                    $query = "SELECT * FROM articles WHERE articleid = 1 AND 1=1"; In this case, the content 
-                    of the page does not change because the two conditions in the SQL statement are both true. 
-                    There is an article with an id of 1, and 1 equals to 1 which is true. If a user changes 
-                    the parameter to 1 AND 1=2, it returns nothing because 1 is not equal to 2.That means 
-                    that the user is controlling the query and can adjust it accordingly to manipulate the 
-                    results.
-                </p>
-                
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-sm-3" style="margin-left: -2%;">
+                    <p class='shift'>
+                        Suppose that we have a web application which takes the parameter 
+                        “article” via <code>$_GET</code> request and queries the database to get an article’s content. 
+                        <i style='color: blue;'>http://website.com/show.php?article=1</i> The underlying PHP code is the following: // 
+                        The ”article” parameter is assigned to $article variable without any sanitization or 
+                        validation <code>$articleid = $_GET[‘article’];</code> // The $articleid parameter is passed as part 
+                        of the query <code>$query = "SELECT * FROM articles WHERE articleid = $articleid";</code>
+                        If a user changes the article parameter to 1 AND 1=1 then the query becomes like this: 
+                        <code>$query = "SELECT * FROM articles WHERE articleid = 1 AND 1=1";</code> In this case, the content 
+                        of the page does not change because the two conditions in the SQL statement are both true. 
+                        There is an article with an id of 1, and 1 equals to 1 which is true. If a user changes 
+                        the parameter to 1 AND 1=2, it returns nothing because 1 is not equal to 2.That means 
+                        that the user is controlling the query and can adjust it accordingly to manipulate the 
+                        results.
+                    </p>
+                </div>
+                <hr>
+                <div class="container doc-type">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 marginal">
                             <h3>SQL Injection</h3>
                             <ul>
                                 <li>You can scan a url for SQL Injection vulnerability simply by inserting the url in the url field and clicking "Test Url</li>
@@ -43,7 +45,7 @@
                             </ul>
                         </div>
             
-                        <div class="col col-sm-3">
+                        <div class="col-md-4 marginal">
                             <h3>HTTP HEADER</h3>
                             <ul>
                                 <li>Get basic informations About HTTP protocol of any website E.g Cookies,hostname </li>
@@ -52,8 +54,8 @@
                             </ul>
                         </div>
 
-                        <div class="col col-sm-3">
-                            <h3>Cross Site Scrpting</h3>
+                        <div class="col-md-4 marginal">
+                            <h3>Cross Site Scripting</h3>
                             <ul>
                                 <li>Cross-site scripting is the unintended execution of remote code by a web 
                                     client. Any web application might expose itself to XSS if it takes input from 
@@ -68,4 +70,4 @@
                 
             </div>
     </section>
-{% endblock content %}
+{% endblock %}

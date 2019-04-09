@@ -8,12 +8,14 @@
   {% include 'dbdex/nav/tabbar.html' %}
 
   <!-- search component -->
-  <section id="main">
-    <div id="centralizeform">
-        <h2 class="text-white" style="padding-left: 15px;">Form Parameter</h2>
-    <p class="text-white" id="pad" style="padding-left: 15px;">Please enter the url to be tested in the following format: <br />
-      http://www.example.com/login.php
-    </p>
+
+  <section class='container-fluid main'>
+    <div class='container'>
+      <div class="form-enter">
+        <h2>Form Parameter</h2>
+        <p>Please enter the url to be tested in the following format: <br />
+          http://www.example.com/login.php
+        </p>
 
     {% include 'dbdex/forms.html' %}
     </span>
@@ -55,6 +57,7 @@
           </table>
         </div>
       {% endif %}
+    </div>
     </div>
   </section>
 {% endblock content %}

@@ -4,71 +4,126 @@
 {% block title %}SQL Injection Test{% endblock title %}
 
 {% block content %}
+
   <!-- Tabbar -->
   {% include 'dbdex/nav/tabbar.html' %}
 
-  <section id="main">
-    <div id="centralizeform">
-      <h2 class="text-white" style="padding-left: 15px;">Scan for SQL injection</h2>
-    <p class="text-white" id="pad" style="padding-left: 15px;">Please enter the url to be tested in the following format: <br />
-      http://www.example.com/index.php?id=x
-    </p>
+  <section class='container-fluid main'>
+    <div class='container'>
+      <div class="form-enter">
+        <h2>Scan for SQL injection</h2>
+        <p>Please enter the url to be tested in the following format: <br />
+            http://www.example.com/index.php?id=x
+        </p>
 
-    <!-- Sql validation form -->
-    {% include 'dbdex/forms.html' %}
-    
-    <!-- MsSQL issue section-->
-    {% if MsSQL %}
-      <div id="vulnerable" title="vulnerable">
-        <p style="color:black;">
-          <strong>RESULT</strong> 
-        </p>
-        <p style="color:red;">{{link}}{{result}}</p>
-        <p style="color:red;">{{resp}}</p>
-        <p style="text-align: center; color: black;">
-          <strong>Vulnerability Description</strong>
-        </p>
-          
-        <div class="table-responsive">
-          <table class="table" style="color:black;">
-            <thead>
-            <tr>
-              <th>Issue</th>
-              <th>Description</th>
-              <th>Suggested Remediation</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <th>Errors are not logged</th>
-              <td>Error logs are very valuable when trying to solve an issue, or to understand if an attempt 
-                 to attack your application was made. Not keeping a log of database errors is a missed opportunity 
-                 to gather information that could help you improve your application’s security before an attacker takes 
-                 advantage of a vulnerability.
-              </td>
-              <td>Instead of showing database errors to the user, log them in a file which isn’t accessible to an attacker 
-                via the web server You can log errors to PHP’s error log or to another file of your choice.
-              </td>
-            </tr>
-            </tbody>
-          </table>
+      <!-- Sql validation form -->
+      {% include 'dbdex/forms.html' %}
+      
+      <!-- MsSQL issue section-->
+      {% if MsSQL %}
+        <div id="vulnerable" title="vulnerable">
+          <p style="color:black;">
+            <strong>RESULT</strong> 
+          </p>
+          <p style="color:red;">{{link}}{{result}}</p>
+          <p style="color:red;">{{resp}}</p>
+          <p style="text-align: center; color: black;">
+            <strong>Vulnerability Description</strong>
+          </p>
+            
+          <div class="table-responsive">
+            <table class="table" style="color:black;">
+              <thead>
+              <tr>
+                <th>Issue</th>
+                <th>Description</th>
+                <th>Suggested Remediation</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th>Errors are not logged</th>
+                <td>Error logs are very valuable when trying to solve an issue, or to understand if an attempt 
+                  to attack your application was made. Not keeping a log of database errors is a missed opportunity 
+                  to gather information that could help you improve your application’s security before an attacker takes 
+                  advantage of a vulnerability.
+                </td>
+                <td>Instead of showing database errors to the user, log them in a file which isn’t accessible to an attacker 
+                  via the web server You can log errors to PHP’s error log or to another file of your choice.
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+            
         </div>
+      {% endif %}
+
+
+
+      <!-- MySQL issue vulnerability section-->
+      {% if MySQL %}
+        <div id="vulnerable" title="vulnerable">
+          <p style="color:black;"><strong>RESULT</strong> </p>
+          <p style="color:red;">{{link}}{{result}}</p>
+          <p style="color:red;">{{resp}}</p>
+          <p style="text-align: center; color: black;"><strong>Vulnerability Description</strong></p>
           
-      </div>
-    {% endif %}
+          <div class="table-responsive">
+            <table class="table" style="color:black;">
+              <thead>
+                <tr>
+                  <th>Issue</th>
+                  <th>Description</th>
+                  <th>Suggested Remediation</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <tr>
+                <th>Input Validation</th>
+                <td>Even though an id will always be a number, the example above is not validating user input at all.
+                  While validating user input is not a direct solution to SQL injection, it helps us control malicious
+                  user input into the database.
+                </td>
+                <td>Before even processing the SQL query, validate user input.
+                  In this case, we need to check that the input is a number.
+                </td>
+                </tr>
+                <tr>
+                  <th>Errors are displayed to the user</th>
+                  <td>Errors allow an attacker to find out information that could lead to compromise.
+                    Information such as what database type and version is running, makes an attacker’s 
+                    job easier when exploiting an SQL injection vulnerability.
+                  </td>
+                  <td>
+                    Do not display SQL errors to the user. If you need to show the user an error, use a 
+                    generic error message that does not give away sensitive information. Configure proper 
+                    error reporting and handling on the web server and in the code so that database error 
+                    messages are never sent to the client web browser. Attackers can leverage technical details 
+                    in verbose error messages to adjust their queries for successful exploitation.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    
+        </div>
+      {% endif %}
+      
 
+      <!-- MariaDB issue vulnerability section -->
+      {% if MariaDB %}
+        <div id="vulnerable" title="vulnerable">
+          <p style="color:black;"><strong>RESULT</strong> </p>
+          <p style="color:red;">{{link}}{{result}}</p>
+          <p style="color:red;">{{resp}}</p>
+          <p style="text-align: center; color: black;">
+            <strong>Vulnerability Description</strong>
+          </p>
 
-
-    <!-- MySQL issue vulnerability section-->
-    {% if MySQL %}
-      <div id="vulnerable" title="vulnerable">
-        <p style="color:black;"><strong>RESULT</strong> </p>
-        <p style="color:red;">{{link}}{{result}}</p>
-        <p style="color:red;">{{resp}}</p>
-        <p style="text-align: center; color: black;"><strong>Vulnerability Description</strong></p>
-        
-        <div class="table-responsive">
-          <table class="table" style="color:black;">
+          <div class="table-responsive">
+            <table class="table" style="color:black;">
             <thead>
               <tr>
                 <th>Issue</th>
@@ -76,87 +131,35 @@
                 <th>Suggested Remediation</th>
               </tr>
             </thead>
-            
+
             <tbody>
-              <tr>
-              <th>Input Validation</th>
-              <td>Even though an id will always be a number, the example above is not validating user input at all.
-                While validating user input is not a direct solution to SQL injection, it helps us control malicious
-                 user input into the database.
-              </td>
-              <td>Before even processing the SQL query, validate user input.
-                In this case, we need to check that the input is a number.
-              </td>
-              </tr>
               <tr>
                 <th>Errors are displayed to the user</th>
                 <td>Errors allow an attacker to find out information that could lead to compromise.
-                  Information such as what database type and version is running, makes an attacker’s 
-                  job easier when exploiting an SQL injection vulnerability.
+                    Information such as what database type and version is running, makes an attacker’s 
+                    job easier when exploiting an SQL injection vulnerability.
                 </td>
-                <td>
-                  Do not display SQL errors to the user. If you need to show the user an error, use a 
-                  generic error message that does not give away sensitive information. Configure proper 
-                  error reporting and handling on the web server and in the code so that database error 
-                  messages are never sent to the client web browser. Attackers can leverage technical details 
+                <td>Do not display SQL errors to the user. If you need to show the user an error, 
+                  use a generic error message that does not give away sensitive information. 
+                  Configure proper error reporting and handling on the web server and in the code so that database 
+                  error messages are never sent to the client web browser. Attackers can leverage technical details 
                   in verbose error messages to adjust their queries for successful exploitation.
                 </td>
               </tr>
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
-  
-      </div>
-    {% endif %}
-    
+      {% endif %}
 
-    <!-- MariaDB issue vulnerability section -->
-    {% if MariaDB %}
-      <div id="vulnerable" title="vulnerable">
-        <p style="color:black;"><strong>RESULT</strong> </p>
-        <p style="color:red;">{{link}}{{result}}</p>
-        <p style="color:red;">{{resp}}</p>
-        <p style="text-align: center; color: black;">
-          <strong>Vulnerability Description</strong>
-        </p>
-
-        <div class="table-responsive">
-          <table class="table" style="color:black;">
-          <thead>
-            <tr>
-              <th>Issue</th>
-              <th>Description</th>
-              <th>Suggested Remediation</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <th>Errors are displayed to the user</th>
-              <td>Errors allow an attacker to find out information that could lead to compromise.
-                  Information such as what database type and version is running, makes an attacker’s 
-                  job easier when exploiting an SQL injection vulnerability.
-              </td>
-              <td>Do not display SQL errors to the user. If you need to show the user an error, 
-                use a generic error message that does not give away sensitive information. 
-                Configure proper error reporting and handling on the web server and in the code so that database 
-                error messages are never sent to the client web browser. Attackers can leverage technical details 
-                in verbose error messages to adjust their queries for successful exploitation.
-              </td>
-            </tr>
-          </tbody>
-          </table>
+      <!-- notvulnerable Validation section -->
+      {% if notvulnerable %}
+        <div id="notvulnerable" title="notvulnerable">
+            <p style="color:black;"><strong>RESULT</strong> </p>
+            <p>{{link}}{{result}}</p>
         </div>
-      </div>
-    {% endif %}
-
-    <!-- notvulnerable Validation section -->
-    {% if notvulnerable %}
-      <div id="notvulnerable" title="notvulnerable">
-          <p style="color:black;"><strong>RESULT</strong> </p>
-          <p>{{link}}{{result}}</p>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </section>
           
 {% endblock content %}

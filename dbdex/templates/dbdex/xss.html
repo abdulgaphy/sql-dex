@@ -8,10 +8,11 @@
   {% include 'dbdex/nav/tabbar.html' %}
       
   <!-- search component -->
-  <section id="main">
-    <div id="centralizeform">
-      <h2 class="text-white" style="padding-left: 15px;">Cross Site Scripting(XSS)</h2>
-      <p class="text-white" id="pad" style="padding-left: 15px;">Please enter the url to be tested 
+  <section class='container-fluid main'>
+    <div class='container'>
+      <div class="form-enter">
+      <h2>Cross Site Scripting(XSS)</h2>
+      <p>Please enter the url to be tested 
         in the following format: <br /> http://www.example.com/?page=something.php
       </p>
 
@@ -61,6 +62,7 @@
           </table>
         </div>
       {% endif %}
+    </div>
     </div>
   </section>
 {% endblock content %}

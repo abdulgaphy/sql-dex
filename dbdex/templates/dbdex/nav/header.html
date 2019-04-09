@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'dbdex:home' %}">SQLDEX</a>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white bg-custom fixed-top">
+        <a class="navbar-brand" href="{% url 'dbdex:home' %}">
+            <img width="150" height="50" class="img-thumbnail" src="{% static 'img/logo2.png' %}" alt="logo" style='border: 0; background-color: transparent;'>
+        </a>
         <button class="navbar-toggler" typea="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -1,17 +1,19 @@
-<div id="tabbar">
-    <div class="row" >
-        <div class="col-2" id="tab" style="margin-left:120px;">
-            <p><a href="{% url 'dbdex:sql' %}" id="getstarted" class="text-white border-bottom">URL PARAMETER</a></p>
-        </div>
-        <div class="col-2" id="tab">
-            <p><a href="{% url 'dbdex:formparameter' %}" id="getstarted" >FORM PARAMETER</a></p>
-        </div>
-        <div class="col-2" id="tab">
-            <p><a href="{% url 'dbdex:header' %}" id="getstarted" >HTTP HEADER</a></p>
-        </div>
+<div class="tabbar">
+    <div class='container-fluid'>
+        <div class="row" >
+            <div class="col-md-3 col-sm-6 col-6">
+                <a href="{% url 'dbdex:sql' %}">URL PARAMETER</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <a href="{% url 'dbdex:formparameter' %}">FORM PARAMETER</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <a href="{% url 'dbdex:header' %}">HTTP HEADER</a>
+            </div>
 
-        <div class="col-2" id="tab">
-        <p><a href="{% url 'dbdex:xss' %}" id="getstarted" >XSS</a></p>
+            <div class="col-md-3 col-sm-6 col-6">
+                <a href="{% url 'dbdex:xss' %}">XSS</a>
+            </div>
         </div>
     </div>
 </div>
