@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.core.mail import send_mail, get_connection
+from django.contrib import messages
 import requests
 import urllib
 import json
@@ -32,7 +33,9 @@ def feedback(request):
                 reciepient_email,
                 connection=con,
             )
-            return HttpResponseRedirect('dbdex/xss.html')
+            messages.success(request, 'Successfully sent!') 
+        else:
+            messages.warning(request, 'Not sent!')
     else:
         form = ContactForm()        
     return render(request, 'dbdex/feedback.html', {'form': form})
