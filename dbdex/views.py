@@ -2,18 +2,40 @@ from django.shortcuts import render
 
 # Create your views here.
 # Views.py controls what is being seen in the browser
-from django.http import HttpResponse 
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from . forms import urlForm, ContactForm
+from django.core.mail import send_mail, get_connection
 import requests
 import urllib
 import json
+
+from . forms import urlForm, ContactForm
 
 def documentation(request):
     return render(request, "dbdex/documentation.html")
 
 def feedback(request):
-    return render(request, 'dbdex/feedback.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            fullname = cd['fullname']
+            email_from = cd['email']
+            reciepient_email = ['akubosylvernus@gmail.com']
+            comment = cd['comment']
+            con = get_connection('django.core.mail.backends.console.EmailBackend')
+            
+            send_mail(
+                fullname,
+                comment,
+                email_from,
+                reciepient_email,
+                connection=con,
+            )
+            return HttpResponseRedirect('dbdex/xss.html')
+    else:
+        form = ContactForm()        
+    return render(request, 'dbdex/feedback.html', {'form': form})
 
 
 def home_page(request):

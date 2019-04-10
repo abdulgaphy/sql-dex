@@ -1,15 +1,25 @@
 {% extends 'dbdex/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}feedback{% endblock title %}
 
-{% block content %}
+{% block contents %}
     <!-- FEEDBACK section -->
-    <section id="feedback">
-        <h2 class="text-white"> FEEDBACK</h2><br/>
-        <form method="POST">
-            {% csrf_token %}
-            
-        <button type="submit" class="btn btn-light"> submit</button>
+    
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+    <section class='container'>
+        <div class="feedback">
+            <h2 class="text-white"> FEEDBACK</h2>
+            <p>your feedback is highly valuable...</p>
+            <form method="POST" >
+                {% csrf_token %}
+                {{ form|crispy  }}
+            <input style='margin-top: 15px;' type="submit" class="btn btn-primary" value='Submit' />
+        </div>
     </section>
-{% endblock content %}
+{% endblock contents %}

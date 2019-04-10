@@ -199,34 +199,6 @@ body {
     margin-bottom: 35px;
 }
 
-#myFooter {
-    background-color: rgba(0,0,0,0.2);
-    color: white;
-    text-align: center;
-}
-
-.footer-copyright p {
-    padding: 5px;
-    margin: 0;
-    background-color: #0e0e17;
-    font-size: 15px;
-    color: #898989;
-}
-
-.main-footer {
-    padding: 10px;
-}
-
-.fa-github {
-    font-size: 35px;
-    color: black;
-    transition: .5s all;
-}
-
-.fa-github:hover {
-    color: white;
-}
-
 .tabbar {
     text-align: center;
     background: hsl(240, 19%, 19%);
@@ -341,6 +313,8 @@ body {
     background: rgba(0,0,0,0.7);
 }
 
+
+/** documentation styling start **/
 .documentation {
     background: white;
     padding-top: 100px;
@@ -384,3 +358,74 @@ body {
 .marginal h3::first-letter {
     text-transform: uppercase;
 }
+/** documentation styling End **/
+
+
+
+/** Feedback contactform style start **/
+
+.feedback {
+    margin:  0 auto;
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+.feedback h2 {
+    text-align: center;
+    text-transform: lowercase;
+    font-weight: 550;
+}
+
+.feedback p {
+    font-size: 15px;
+    color: #c2b5b5;
+    text-align: center;
+}
+
+.feedback form {
+    padding: 20px;
+}
+
+.feedback label {
+    color: white;
+}
+
+.feedback .ctrlHolder {
+    margin-top: 15px;
+}
+
+/** Feedback contactform style end **/
+
+
+
+/** footer style start **/
+
+#myFooter {
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+    text-align: center;
+}
+
+.footer-copyright p {
+    padding: 5px;
+    margin: 0;
+    background-color: #0e0e17;
+    font-size: 15px;
+    color: #898989;
+}
+
+.main-footer {
+    padding: 10px;
+}
+
+.fa-github {
+    font-size: 35px;
+    color: black;
+    transition: .5s all;
+}
+
+.fa-github:hover {
+    color: white;
+}
+
+/** footer style end **/
