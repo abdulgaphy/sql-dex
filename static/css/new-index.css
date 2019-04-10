@@ -429,3 +429,19 @@ body {
 }
 
 /** footer style end **/
+
+.messages {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    right: 0;
+    background-color: #50a550;
+    margin: 10px;
+    border-radius: 3px;
+    box-shadow: -5px 5px 5px #2d2222;
+    list-style: none;
+}
+
+.messages li {
+    padding: 10px 30px 10px 0;
+}
