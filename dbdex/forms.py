@@ -1,7 +1,10 @@
 from django import forms
+from . validation import validate_dot_com, validate_url
 
 class urlForm(forms.Form):
-    url = forms.URLField(widget =forms.TextInput(
+    url = forms.URLField(label='',
+                    validators=[validate_url, validate_dot_com],
+                    widget =forms.TextInput(
                     attrs ={
                     "class":"form-control mr-sm-2 ",
                     "placeholder":"Enter URL",
