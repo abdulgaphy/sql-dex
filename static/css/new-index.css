@@ -449,12 +449,13 @@ body {
 }
 
 .form-error {
+    font-size: 20px;
     transition: all 0.5s;
     z-index: 10005;
     position: absolute;
     top: 10%;
     right: 5%;
-    background: rgba(250, 19, 105, 0.89);
+    background: rgba(192, 74, 42, 0.89);
     margin-top: 10px;
     margin-left: 5%;
     color: #f7f5f4;
