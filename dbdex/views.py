@@ -50,14 +50,13 @@ def home_page(request):
 
 # The sql function below contain all about the sql injection page
 def sql(request):
-         
-    form = urlForm(request.POST or None)
     if request.method == 'POST':
-        search_id = request.POST.get('url', None)
-
+        form = urlForm(request.POST or None)
         if form.is_valid():
-
-            response = requests.get(search_id+"%27").text #This line tests the url for sql injection vulnurability
+            cd = form.cleaned_data
+            search_id = cd['url']
+            #This line tests the url for sql injection vulnurability
+            response = f'{search_id}+"%27"'.text 
             printout = ' is vulnerable to SQL injection'
 
             url = search_id

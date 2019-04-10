@@ -1,0 +1,24 @@
+    <!-- form success and error message -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- form validation error -->
+    <div class="form-error">
+        {% if form.errors %}
+            <div style="padding: 5px;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <div style="padding: 5px">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
