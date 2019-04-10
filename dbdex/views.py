@@ -17,10 +17,8 @@ def feedback(request):
 
 
 def home_page(request):
-    contact = ContactForm()
     context = {
         "feedback":"Feedback",
-        "contact":contact
     }
     
     return render(request, "dbdex/index.html", context)
@@ -29,13 +27,6 @@ def home_page(request):
 def sql(request):
          
     form = urlForm(request.POST or None)
-    contact = ContactForm()
-    context ={
-        "form": form,
-        "feedback":"Feedback",
-        "contact":contact,
-    }
-
     if request.method == 'POST':
         search_id = request.POST.get('url', None)
 
@@ -61,7 +52,6 @@ def sql(request):
                         "result": printout,
                         "link": str1,
                         "feedback":"Feedback",
-                        "contact":contact,
                     }
                     return render (request, "dbdex/sql.html", context)
 
@@ -74,7 +64,6 @@ def sql(request):
                         "result": printout,
                         "link": str1,
                         "feedback":"Feedback",
-                        "contact":contact,
                     }
                     return render (request, "dbdex/sql.html", context)
 
@@ -87,7 +76,6 @@ def sql(request):
                         "result": printout,
                         "link": str1,
                         "feedback":"Feedback",
-                        "contact":contact,
                     }
                     return render (request, "dbdex/sql.html", context)
 
@@ -99,7 +87,6 @@ def sql(request):
                         "notvulnerable": True,
                         "link": str1,
                         "feedback":"Feedback",
-                        "contact":contact
                     }
     
                     return render(request, "dbdex/sql.html", context)
@@ -111,19 +98,22 @@ def sql(request):
                         "form": form,
                         'notvulnerable': True,
                         "feedback":"Feedback",
-                        "contact":contact,
                         "link": str1,
                         "result": printout
                         }
                 return render(request, "dbdex/sql.html", context)
+    context ={
+        "form": form,
+        "feedback":"Feedback",
+    }
     return render(request, "dbdex/sql.html", context)
+
+
 # this method check for the form parameter
 def formparameter(request):  
     form = urlForm(request.POST or None)
-    contact = ContactForm()
     context = {
         "feedback":"Feedback",
-        "contact":contact,
         "form": form,
     }
    
@@ -151,7 +141,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "feedback":"Feedback",
                     "link": str1,
-                    "contact":contact
                 } 
                 print('Not vulnerable')
                 return render(request, "dbdex/formparameter.html", context)
@@ -169,7 +158,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                 
@@ -186,7 +174,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                 
@@ -203,7 +190,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                
@@ -220,7 +206,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                 
@@ -236,7 +221,6 @@ def formparameter(request):
                     "getresult": getresult,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                 } 
                 return render(request, "dbdex/formparameter.html", context)
                 
@@ -245,11 +229,9 @@ def formparameter(request):
 # the method for printing http header
 def header(request):
     form = urlForm(request.POST or None)
-    contact = ContactForm()
     context ={
         "form": form,
         "feedback":"Feedback",
-        "contact":contact
     }
     if request.method == 'POST':
         search_id = request.POST.get('url', None)
@@ -263,7 +245,6 @@ def header(request):
                 "head": head,
                 'httpheader': True,   
                 "feedback":"Feedback",
-                "contact":contact                     
                 }
         return render (request, "dbdex/header.html", context)
 
@@ -272,22 +253,13 @@ def header(request):
 # the method for xss
 def xss(request):
     form = urlForm(request.POST or None)
-    contact = ContactForm()
-
-    context ={
-        "form": form,
-        "feedback":"Feedback",
-        "contact":contact
-    }
- 
-
     if request.method == 'POST':
         search_id = request.POST.get('url', None)
         url = search_id
         url.split("/")[2:]
         array = url.split("/")[0:3]
         str1 = '/'.join(array)
-# javascript code is been supply
+        # javascript code is been supply
         if form.is_valid():
             payloads = ['<script>alert(1);</script>', '<BODY ONLOAD=alert(1)>']
             for payload in payloads:
@@ -300,7 +272,6 @@ def xss(request):
                     "vulnerable": True,
                     "link": str1,
                     "feedback":"Feedback",
-                    "contact":contact
                     }
                     print ("Parameter vulnerable\r\n")
                     print ("Attack string: "+payload)
@@ -310,14 +281,17 @@ def xss(request):
                 else:
                     resp = " is not vulnerable\r\n"
                     context ={
-                    "form": form,
-                    "getresult": resp,
-                    "notvulnerable": True,
-                    "link": str1,
-                    "feedback":"Feedback",
-                    "contact":contact
+                        "form": form,
+                        "getresult": resp,
+                        "notvulnerable": True,
+                        "link": str1,
+                        "feedback":"Feedback",
                     }
                     print ("Parameter not vulnerable\r\n")
                     
                     return render(request, "dbdex/xss.html", context)
+    context ={
+        "form": form,
+        "feedback":"Feedback",
+    }
     return render(request, "dbdex/xss.html", context)
