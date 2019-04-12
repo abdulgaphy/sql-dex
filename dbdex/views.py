@@ -50,13 +50,13 @@ def home_page(request):
 
 # The sql function below contain all about the sql injection page
 def sql(request):
+    form = urlForm(request.POST or None)
     if request.method == 'POST':
-        form = urlForm(request.POST or None)
         if form.is_valid():
             cd = form.cleaned_data
             search_id = cd['url']
             #This line tests the url for sql injection vulnurability
-            response = f'{search_id}+"%27"'.text 
+            response = f'{search_id}%27'
             printout = ' is vulnerable to SQL injection'
 
             url = search_id
@@ -278,30 +278,30 @@ def header(request):
 def xss(request):
     form = urlForm(request.POST or None)
     if request.method == 'POST':
-        search_id = request.POST.get('url', None)
-        url = search_id
-        url.split("/")[2:]
-        array = url.split("/")[0:3]
-        str1 = '/'.join(array)
-        # javascript code is been supply
         if form.is_valid():
+            cd = form.cleaned_data
+            search_id = cd['url']
+            url = search_id
+            url.split("/")[2:]
+            array = url.split("/")[0:3]
+            str1 = '/'.join(array)
+            print(str1)
+            # javascript code is been supply
             payloads = ['<script>alert(1);</script>', '<BODY ONLOAD=alert(1)>']
             for payload in payloads:
-                req = requests.post(url+payload)
-                if payload in req.text:
+                req_data = f'{url}{payload}'
+                req = requests.post(req_data)
+                print(req.text)
+                if payload in req_data:
                     resp = " is vulnerable\r\n"
                     context ={
-                    "form": form,
-                    "getresult": resp,
-                    "vulnerable": True,
-                    "link": str1,
-                    "feedback":"Feedback",
+                        "form": form,
+                        "getresult": resp,
+                        "vulnerable": True,
+                        "link": str1,
                     }
-                    print ("Parameter vulnerable\r\n")
-                    print ("Attack string: "+payload)
-                 
-                    
-                    return render(request, "xss.html", context)
+                    return render(request, "dbdex/xss.html", context)
+
                 else:
                     resp = " is not vulnerable\r\n"
                     context ={
@@ -311,7 +311,6 @@ def xss(request):
                         "link": str1,
                         "feedback":"Feedback",
                     }
-                    print ("Parameter not vulnerable\r\n")
                     
                     return render(request, "dbdex/xss.html", context)
     context ={
