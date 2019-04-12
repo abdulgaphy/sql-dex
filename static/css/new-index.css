@@ -230,6 +230,19 @@ body {
     transition: .3s all;
 }
 
+.active::after {
+    background-image: -webkit-gradient(linear,right top,left top,from(#ff8a00),to(#da1b60));
+    background-image: linear-gradient(to left,#ff8a00,#da1b60);
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    right: 0;
+    bottom: -10px;
+    transition: .3s all;
+}
+
+
 .tabbar a::first-letter {
     text-transform: capitalize;
 }
@@ -485,4 +498,28 @@ body {
     line-height: 20px;
     cursor: pointer;
     transition: 0.5s;
+}
+
+#notvulnerable, #vulnerable{
+    padding: 15px;
+    font-size: 20px;
+    background-color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+#notvulnerable #vulnerable p:first-child {
+    color: black;
+    font-size: 20px;
+}
+
+#notvulnerable p:last-child {
+    color: #57c957;
+    font-size: 18px;
+}
+
+#vulnerable p:last-child {
+    color: rgb(202, 62, 62);
+    font-size: 18px;
 }

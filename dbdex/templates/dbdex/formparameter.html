@@ -9,7 +9,7 @@
 
   <!-- search component -->
 
-  <section class='container-fluid main'>
+  <section class='container-fluid main' id='parameter'>
     <div class='container'>
       <div class="form-enter">
         <h2>Form Parameter</h2>
@@ -19,45 +19,55 @@
 
     {% include 'dbdex/forms.html' %}
     </span>
-    <div id="parameter">
+<div id="parameter">
       {% if notvulnerable %}
       <p><strong>RESULT</strong></p>
       {{link}}{{getresult}}
-      
+
       {% endif %}
 
       {% if vulnerable %}
       <span style="color:black;"><strong>RESULT: </strong></span>
       <span style="color: red;">{{link}}</span><span style="color:red; ">{{getresult}}</span>
       <p style="text-align: center; color: black;"><strong>Vulnerability Description</strong></p>
-        <div class="table-responsive">
-          <table class="table" style="color:black;">
+      <div class="table-responsive">
+        <table class="table" style="color:black;">
           <thead>
-          <tr>
-          <th>Issue</th>
-          <th>Description</th>
-          <th>Suggested Remediation</th>
-          </tr>
+            <tr>
+              <th>Issue</th>
+              <th>Description</th>
+              <th>Suggested Remediation</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-          <th>Input Validation</th>
-          <td>Even though an id will always be a number, the example above is not validating user input at all.</p>
-          <p>While validating user input is not a direct solution to SQL injection, it helps us control malicious user input into the database.</td>
-          <td>Before even processing the SQL query, validate user input.</p>
-          <p>In this case, we need to check that the input is a number.</td>
-          </tr>
-          <tr>
-          <th>Code allows for SQL injection</th>
-          <td>The example above is accepting user input (in this case, from a GET parameter), and including it directly in the SQL statement.</p>
-          <p>This allows an attacker to inject SQL into the query, therefore tricking the application into sending a malformed query to the database.</td>
-          <td>Use parameterized queries when dealing with SQL queries that contains user input.<p>A parameterized query allows the database to understand which parts of the SQL query should be considered as user input, therefore solving SQL injection.</li></p></td>
-          </tr>
+            <tr>
+              <th>Input Validation</th>
+              <td>Even though an id will always be a number, the example above is not validating user input at all.</p>
+                <p>While validating user input is not a direct solution to SQL injection, it helps us control malicious
+                  user input into the database.
+              </td>
+              <td>Before even processing the SQL query, validate user input.</p>
+                <p>In this case, we need to check that the input is a number.
+              </td>
+            </tr>
+            <tr>
+              <th>Code allows for SQL injection</th>
+              <td>The example above is accepting user input (in this case, from a GET parameter), and including it
+                directly in the SQL statement.</p>
+                <p>This allows an attacker to inject SQL into the query, therefore tricking the application into
+                  sending a malformed query to the database.
+              </td>
+              <td>Use parameterized queries when dealing with SQL queries that contains user input.<p>A parameterized
+                  query allows the database to understand which parts of the SQL query should be considered as user
+                  input, therefore solving SQL injection.</li>
+                </p>
+              </td>
+            </tr>
           </tbody>
-          </table>
-        </div>
+        </table>
+      </div>
       {% endif %}
-    </div>
+</div>
     </div>
   </section>
 {% endblock content %}
