@@ -10,7 +10,7 @@ The tool, as some features like Parameter ID, Form Parameter, HTTP header and Cr
 - $ pip install -r requirements.txt or pip3 install -r requirements.txt
 
 # Contributions
-This project is open Bug reports and pull requests are welcome on GitHub at
+Contributions are always welcome! Please read the Contribution guidelines for this project.
 
 # Thanks
 Special thanks to [Moses Ayomide Aleji](https://github.com/mosesayo) for his great contributions to the success of the project
