@@ -1,4 +1,4 @@
-django==1.11
+django==2
 requests==2.21.0
 gunicorn==19.9.
 psycopg2==2.8.2
