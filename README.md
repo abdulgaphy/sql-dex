@@ -9,9 +9,8 @@ The tool, as some features like Parameter ID, Form Parameter, HTTP header and Cr
 - \$ cd sql-dex
 - \$ pip install -r requirements.txt or pip3 install -r requirements.txt
 
-<hr>
 # Contributions
-Contributions are always welcome! Please read the <a href=''>Contribution guidelines for this project</a>.
+Contributions are always welcome! Please read the <a href='https://github.com/silvareal/sql-dex/blob/master/docs/CONTRIBUTING.md'>Contribution guidelines for this project</a>.
 
 # Thanks
 
